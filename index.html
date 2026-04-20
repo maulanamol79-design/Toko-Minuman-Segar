@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil FAISAL MAULANA</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Share Tech Mono", monospace;
+      }
+
+      body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #021a14, #00332a, #001a16);
+        color: white;
+        overflow-x: hidden;
+      }
+
+      /* MATRIX BACKGROUND */
+      canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 35px;
+        border-radius: 15px;
+        background: rgba(0, 0, 0, 0.7);
+        border: 1px solid #00ff88;
+        box-shadow: 0 0 40px #00ff88;
+        text-align: center;
+      }
+
+      .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 3px solid #00ff88;
+        object-fit: cover;
+        box-shadow: 0 0 30px #00ff88;
+        transition: 0.4s;
+      }
+
+      .profile-img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 60px #00ff88;
+      }
+
+      h1 {
+        margin-top: 15px;
+        font-size: 34px;
+        text-shadow: 0 0 15px #00ff88;
+      }
+
+      .subtitle {
+        opacity: 0.7;
+        margin-bottom: 10px;
+      }
+      .info p {
+        margin: 5px 0;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 25px;
+        border-radius: 5px;
+        border: 1px solid #00ff88;
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        background: #00ff88;
+        color: black;
+        box-shadow: 0 0 20px #00ff88;
+      }
+
+      .section {
+        margin-top: 35px;
+        text-align: left;
+      }
+
+      .section h2 {
+        margin-bottom: 10px;
+        border-left: 3px solid #00ff88;
+        padding-left: 10px;
+      }
+
+      .card {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #00ff88;
+        box-shadow: 0 0 20px #00ff88;
+      }
+
+      .family-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .family-icon {
+        font-size: 35px;
+      }
+
+      .timeline {
+        border-left: 2px solid #00ff88;
+        padding-left: 15px;
+      }
+      .timeline div {
+        margin-bottom: 15px;
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: 0.5s;
+      }
+      .timeline div.show {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .bar {
+        height: 8px;
+        background: #002b1a;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        overflow: hidden;
+      }
+      .fill {
+        height: 100%;
+        background: #00ff88;
+        animation: load 2s ease;
+      }
+
+      .sd-bar {
+        background: linear-gradient(to bottom, red 50%, white 50%);
+        background-size: 100% 200%;
+        animation: sdMove 2s linear infinite;
+      }
+
+      .smp-bar {
+        background: linear-gradient(to bottom, blue 50%, white 50%);
+        background-size: 100% 200%;
+        animation: smpMove 2s linear infinite;
+      }
+
+      .sma-bar {
+        background: linear-gradient(to bottom, gray 50%, white 50%);
+        background-size: 100% 200%;
+        animation: smaMove 2s linear infinite;
+      }
+
+      .kuliah-bar {
+        background: linear-gradient(
+          to bottom,
+          yellow,
+          orange,
+          purple,
+          magenta,
+          deepskyblue,
+          brown
+        );
+        background-size: 100% 300%;
+        animation: kuliahMove 3s linear infinite;
+      }
+
+      @keyframes sdMove {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 0 100%;
+        }
+      }
+      @keyframes smpMove {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 0 100%;
+        }
+      }
+      @keyframes smaMove {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 0 100%;
+        }
+      }
+      @keyframes kuliahMove {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 0 100%;
+        }
+      }
+
+      @keyframes load {
+        from {
+          width: 0;
+        }
+      }
+
+      .footer {
+        margin-top: 20px;
+        text-align: center;
+        opacity: 0.9;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="matrix"></canvas>
+
+    <div class="container">
+      <img src="foto.jpg" class="profile-img" />
+      <h1>FAISAL MAULANA</h1>
+      <p class="subtitle">Mahasiswa Teknik Informatika</p>
+
+      <div class="info">
+        <p>📍 Dayah, Sinthop, Mila Aceh, Indonesia</p>
+        <p>📧 maulanamol79@gmail.com</p>
+        <p>📞 0895415666009</p>
+      </div>
+
+      <!-- CONNECT WHATSAPP -->
+      <a
+        href="https://wa.me/62895415666009?text=Halo%20Faisal%20Maulana%2C%20saya%20ingin%20menghubungi%20anda"
+        class="btn"
+        target="_blank"
+      >
+        ▶ CONNECT
+      </a>
+
+      <div class="section">
+        <h2>Informasi Keluarga</h2>
+        <div class="card family-card">
+          <div class="family-icon">👨‍👩‍👦</div>
+          <div>
+            Nama Ayah: Nasruddin<br />
+            Nama Ibu: Nurbaiti
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Informasi Pribadi</h2>
+        <div class="card">
+          Tanggal Lahir: 14 November 2005<br />
+          Status: Mahasiswa<br />
+          Kuliah: Universitas Jabal Ghafur<br />
+          Jurusan: Teknik Informatika
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Profil</h2>
+        <div class="card">
+          Pembelajar Seumur Hidup: Mahasiswa Memahami bahwa teknologi berubah
+          dengan cepat, sehingga berfokus pada fundamental yang kuat daripada
+          sekadar mengikuti tren.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Pendidikan</h2>
+        <div class="timeline">
+          <div>2024 - Sekarang | Universitas Jabal Ghafur</div>
+          <div>2021 - 2024 | SMA Negeri 1 Mila</div>
+          <div>2018 - 2021 | SMP Negeri 1 Mila</div>
+          <div>2012 - 2018 | SD Negeri 1 Andeue</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Progress</h2>
+        <p>SD</p>
+        <div class="bar">
+          <div class="fill sd-bar" style="width: 100%"></div>
+        </div>
+        <p>SMP</p>
+        <div class="bar">
+          <div class="fill smp-bar" style="width: 100%"></div>
+        </div>
+        <p>SMA</p>
+        <div class="bar">
+          <div class="fill sma-bar" style="width: 100%"></div>
+        </div>
+        <p>Kuliah</p>
+        <div class="bar">
+          <div class="fill kuliah-bar" style="width: 70%"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <a href="RPL.html" style="text-decoration: none; color: white">
+          <div class="card">
+            <b>🛒 Web Toko Minuman Segar</b><br />
+            Membuat sistem keranjang belanja sederhana menggunakan JavaScript.
+            <br /><br />
+            <span style="opacity: 0.7">Klik untuk melihat project →</span>
+          </div>
+        </a>
+
+        <br />
+
+        <a href="gas.html" style="text-decoration: none; color: white">
+          <div class="card">
+            <b>🛒 Web pangkalan gas</b><br />
+            Membuat sistem keranjang belanja sederhana menggunakan JavaScript.
+            <br /><br />
+            <span style="opacity: 0.7">Klik untuk melihat project →</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="footer">✨ Dibuat oleh Faisal Maulana</div>
+    </div>
+
+    <script>
+      // MATRIX EFFECT
+      const canvas = document.getElementById("matrix");
+      const ctx = canvas.getContext("2d");
+
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+
+      const letters = "01";
+      const fontSize = 14;
+      const columns = canvas.width / fontSize;
+
+      const drops = [];
+      for (let x = 0; x < columns; x++) drops[x] = 1;
+
+      function draw() {
+        ctx.fillStyle = "rgba(0,0,0,0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#00ff88";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = letters[Math.floor(Math.random() * letters.length)];
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+      }
+
+      setInterval(draw, 33);
+
+      // TIMELINE ANIMASI
+      const items = document.querySelectorAll(".timeline div");
+      window.addEventListener("scroll", () => {
+        items.forEach((el) => {
+          const top = el.getBoundingClientRect().top;
+          if (top < window.innerHeight - 50) {
+            el.classList.add("show");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
